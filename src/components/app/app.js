@@ -35,10 +35,7 @@ class App extends Component {
 
     addEmployee = (e) => {
         e.preventDefault();
-        //console.log(this.addItem);
-        /* this.setState(({data}) => {
-            
-        }) */
+        console.log('yes');
     }
 
     render() {    
