@@ -13,9 +13,9 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {name: 'John C.', salary: 800, increase: false, id: 1},
-                {name: 'Alex M.', salary: 3000, increase: true, id: 2},
-                {name: 'Carl W.', salary: 5000, increase: false, id: 3}
+                {name: 'John C.', salary: 800, id: 1},
+                {name: 'Alex M.', salary: 3000, id: 2},
+                {name: 'Carl W.', salary: 5000, id: 3}
             ]
         }
         this.maxId = 4;
@@ -33,9 +33,23 @@ class App extends Component {
         })
     }
 
-    addEmployee = (e) => {
-        e.preventDefault();
-        console.log('yes');
+    addEmployee = (name, salary) => {
+        if (name !== '' && salary !== '') {
+            this.setState(({data}) => {
+                const newItem = {
+                    name: name,
+                    salary: +salary,
+                    id: this.maxId++
+                }
+                const newArr = [];
+                newArr.push(newItem);
+                const newData = data.concat(newArr);
+                console.log(newItem);
+                return {
+                    data: newData
+                }
+            })
+        }
     }
 
     render() {    

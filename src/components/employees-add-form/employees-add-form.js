@@ -19,21 +19,15 @@ class EmployeesAddForm extends Component {
 
     addItem = (e) => {
         e.preventDefault();
-        if (this.state.name !== '' && this.state.salary !== '') {
-            const obj = {
-                name: this.state.name,
-                salary: this.state.salary,
-                increase: false,
-                id: 4
+        const {onAdd} = this.props;
+        const {name, salary} = this.state;
+        onAdd(name, salary);
+        this.setState(() => {
+            return {
+                name: '',
+                salary: ''
             }
-            console.log(obj); 
-            this.setState(() => {
-                return {
-                    name: '',
-                    salary: ''
-                }
-            })
-        }
+        })
     }
 
     render() {
