@@ -96,10 +96,28 @@ class App extends Component {
         this.setState({term});
     }
 
+    showAll = () => {
+        this.setState(({data}) => {
+            return {
+                data: data
+            }
+        });
+    }
+
+    filterEmpOnAbove = () => {
+        if (this.state.data.salary < 1000) {
+            return this.state.data;
+        }
+        return this.state.data.filter(item => {
+            return item.salary > 1000
+        })
+    }
+
     render() {  
         const {data, term} = this.state;
         const employees = this.state.data.length;  
         const increased = this.state.data.filter(item => item.increase).length;
+        const filterEmp = this.filterEmpOnAbove();
         const visibleData = this.searchEmp(data, term);
         return (
             <div className="app">
@@ -107,9 +125,9 @@ class App extends Component {
     
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-                    <AppFilter />
+                    <AppFilter showAll={this.showAll} filterEmpOnAbove={this.filterEmpOnAbove}/>
                 </div>
-    
+
                 <EmployeesList 
                     data={visibleData}
                     onDelete={this.deleteItem}

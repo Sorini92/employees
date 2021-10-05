@@ -1,20 +1,13 @@
-import { Component } from 'react';
 import './app-filter.css';
 
-class AppFilter extends Component{
-    constructor(props) {
-        super(props);
-        this.setState = {
-            data: this.props.data
-        }
-    }
-    render() {
+const AppFilter = (props) => {
+    const {showAll, filterEmpOnAbove} = props;
         return (
             <div className="btn-group">
                 <button 
                     className="btn btn-light"
                     type="button"
-                    //onClick={data}
+                    onClick={() => showAll()}
                     >
                     Все содрудники
                 </button>
@@ -28,13 +21,12 @@ class AppFilter extends Component{
                 <button 
                     className="btn btn-outline-light"
                     type="button" 
-                    //onClick={() => filterEmpOnAbove()}
+                    onClick={() => filterEmpOnAbove()}
                     >
                     З/П больше 1000$
                 </button>
             </div>
         );
-    }
 }
 
 export default AppFilter;
