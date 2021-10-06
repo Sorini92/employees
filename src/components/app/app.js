@@ -93,11 +93,6 @@ class App extends Component {
         this.setState({term});
     }
 
-    onUpdateSelary = (salary) => {
-        console.log(this.state.data)
-        this.setState({salary});
-    }
-
     filterPost = (items, filter) => {
         switch (filter) {
             case 'rise': 
@@ -131,7 +126,6 @@ class App extends Component {
                     data={visibleData}
                     onDelete={this.deleteItem}
                     onToggleProp={this.onToggleProp}
-                    onUpdateSelary={this.onUpdateSelary}
                 />
                 <EmployeesAddForm
                     onAdd={this.addEmployee}
