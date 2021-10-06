@@ -1,30 +1,46 @@
 import './app-filter.css';
 
 const AppFilter = (props) => {
-    const {showAll, filterEmpOnAbove} = props;
+    const buttonsData = [
+        {name: 'all', label: 'Все содрудники'},
+        {name: 'rise', label: 'На повышение'},
+        {name: 'moreThen1000', label: 'З/П больше 1000$'}
+    ];
+    const buttons = buttonsData.map(({name, label}) => {
+        const active = props.filter === name;
+        const clazz = active ? 'btn-light' : 'btn-outline-light';
+        return (
+            <button 
+                className={`btn ${clazz}`}
+                type="button"
+                key={name}
+                onClick={() => props.onFilterSelect(name)}
+                >
+                {label}
+            </button>
+        )
+    })
         return (
             <div className="btn-group">
-                <button 
+                {buttons}
+                {/* <button 
                     className="btn btn-light"
                     type="button"
-                    onClick={() => showAll()}
                     >
                     Все содрудники
                 </button>
                 <button 
                     className="btn btn-outline-light"
                     type="button"
-                    //onClick={() => filterEmpOnRise()}
                     >
                     На повышение
                 </button>
                 <button 
                     className="btn btn-outline-light"
                     type="button" 
-                    onClick={() => filterEmpOnAbove()}
                     >
                     З/П больше 1000$
-                </button>
+                </button> */}
             </div>
         );
 }
